@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TestService } from 'src/app/Services/test/test.service';
 
 @Component({
   selector: 'app-home',
@@ -7,6 +8,13 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  constructor(private testService: TestService) {
+    this.testService.getAll().subscribe(data => {
+      console.log(data);
+      
+    })
+  }
+  ngOnInit() {
 
+  }
 }

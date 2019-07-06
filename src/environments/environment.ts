@@ -5,7 +5,10 @@
 export const environment = {
   production: false
 };
-
+const SERVERURL =  'http://localhost:3000'
+export const SERVER = {
+ DomainURL: SERVERURL
+};
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
