@@ -40,7 +40,7 @@ export class AppComponent {
       this.splashScreen.hide();
     //  this.languageService.setLanguage('en')
      this.languageService.setInitialAppLanguage();
-     this.themeService.setTheme('white-theme');
+     this.themeService.getSavedTheme();
     });
   }
 }
