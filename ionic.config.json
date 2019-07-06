@@ -1,5 +1,7 @@
 {
   "name": "BaniElNoor",
-  "integrations": {},
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "angular"
 }
