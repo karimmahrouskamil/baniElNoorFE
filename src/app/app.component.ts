@@ -1,26 +1,26 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
 
-import { Platform } from '@ionic/angular';
-import { SplashScreen } from '@ionic-native/splash-screen/ngx';
-import { StatusBar } from '@ionic-native/status-bar/ngx';
-import { LanguageService } from './Services/Language/language.service';
-import { ThemeService } from './Services/theme/theme.service';
+import { Platform } from "@ionic/angular";
+import { SplashScreen } from "@ionic-native/splash-screen/ngx";
+import { StatusBar } from "@ionic-native/status-bar/ngx";
+import { LanguageService } from "./Services/Language/language.service";
+import { ThemeService } from "./Services/theme/theme.service";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: 'app.component.html'
+  selector: "app-root",
+  templateUrl: "app.component.html"
 })
 export class AppComponent {
   public appPages = [
     {
-      title: 'Home',
-      url: '/home',
-      icon: 'home'
+      title: "Home",
+      url: "/home",
+      icon: "home"
     },
     {
-      title: 'List',
-      url: '/list',
-      icon: 'list'
+      title: "List",
+      url: "/list",
+      icon: "list"
     }
   ];
 
@@ -29,7 +29,7 @@ export class AppComponent {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private languageService: LanguageService,
-    private themeService:ThemeService
+    private themeService: ThemeService
   ) {
     this.initializeApp();
   }
@@ -38,9 +38,11 @@ export class AppComponent {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-    //  this.languageService.setLanguage('en')
-     this.languageService.setInitialAppLanguage();
-     this.themeService.getSavedTheme();
+      this.statusBar.overlaysWebView(true);
+      this.statusBar.styleLightContent();
+      //  this.languageService.setLanguage('en')
+      this.languageService.setInitialAppLanguage();
+      this.themeService.getSavedTheme();
     });
   }
 }
