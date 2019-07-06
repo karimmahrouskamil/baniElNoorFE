@@ -4,6 +4,7 @@ import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { LanguageService } from './Services/Language/language.service';
+import { ThemeService } from './Services/theme/theme.service';
 
 @Component({
   selector: 'app-root',
@@ -27,7 +28,8 @@ export class AppComponent {
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    private languageService: LanguageService
+    private languageService: LanguageService,
+    private themeService:ThemeService
   ) {
     this.initializeApp();
   }
@@ -38,7 +40,7 @@ export class AppComponent {
       this.splashScreen.hide();
     //  this.languageService.setLanguage('en')
      this.languageService.setInitialAppLanguage();
-     
+     this.themeService.setTheme('white-theme');
     });
   }
 }
