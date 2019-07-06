@@ -36,5 +36,11 @@ export class LanguageService {
     this.translate.use(lng);
     this.selected = lng;
     this.storage.set(LNG_KEY, lng);
+    if (lng === 'ar') {
+      document.documentElement.dir = "rtl"
+ 
+    } else {
+      document.documentElement.dir = "ltr"
+    }
   }
 }
