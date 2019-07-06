@@ -37,6 +37,7 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
       this.languageService.setInitialAppLanguage();
+      this.languageService.setLanguage('ar')
     });
   }
 }
