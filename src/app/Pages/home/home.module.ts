@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 
 import { HomePage } from './home.page';
 import { TranslateModule } from '@ngx-translate/core';
+import { MaterialModule } from 'src/app/material/material.module';
 
 @NgModule({
   imports: [
@@ -13,12 +14,14 @@ import { TranslateModule } from '@ngx-translate/core';
     FormsModule,
     IonicModule,
     TranslateModule,
+    MaterialModule,
     RouterModule.forChild([
       {
         path: '',
         component: HomePage
       }
     ])
+
   ],
   declarations: [HomePage]
 })
