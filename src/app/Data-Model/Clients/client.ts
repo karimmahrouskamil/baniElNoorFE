@@ -2,7 +2,7 @@ export class Client {
   Name: string;
   Info: string;
   GraduationYearID: number;
-  AddressID: Address;
+  // AddressID: Address;
   Email: string;
   LocationX: number;
   LocationY: number;
@@ -18,18 +18,21 @@ export class Client {
   motherPhone: string;
   Class: number;
   Zone: number;
-
+  streetName: string;
+  floorNumber: string;
+  buildingNumber: string;
+  flatNumber: string;
+  streetDetails: string;
+  
   constructor(ClientOptions: any) {
     this.Name = ClientOptions.name;
     this.Info = ClientOptions.notes;
     this.GraduationYearID = 0;
-    this.AddressID = new Address(
-      ClientOptions.streetName,
-      ClientOptions.floorNumber,
-      ClientOptions.buildingNumber,
-      ClientOptions.flatNumber,
-      ClientOptions.streetDetails
-    );
+    this.streetName = ClientOptions.streetName;
+    this.floorNumber = String(ClientOptions.floorNumber);
+    this.buildingNumber = String(ClientOptions.buildingNumber);
+    this.flatNumber = String(ClientOptions.flatNumber);
+    this.streetDetails = ClientOptions.streetDetails;
     this.Email = ClientOptions.email;
     this.LocationX = 0;
     this.LocationY = 0;
