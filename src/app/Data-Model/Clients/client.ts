@@ -37,7 +37,7 @@ export class Client {
     this.birthDate = new Date();
     this.fatherPhone = ClientOptions.fatherPhone;
     this.motherPhone = ClientOptions.motherPhone;
-    this.Class = 1;
+    this.Class = ClientOptions.class;
     this.Zone = 1;
   }
 }

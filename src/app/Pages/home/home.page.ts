@@ -4504,21 +4504,55 @@ export class HomePage {
       }
       return servantObj.ID;
     }
+    let AllClasses = [
+      {
+        ID: 1,
+        ClassName: "اولي ثانوي"
+      },
+      {
+        ID: 2,
+        ClassName: "تانيه ثانوي"
+      },
+      {
+        ID: 3,
+        ClassName: "تالثه ثانوي"
+      },
+      {
+        ID: 4,
+        ClassName: "لا يوجد"
+      }
+    ];
+    let ClientClassObj;
+    function checkForClass(classes) {
+      ClientClassObj = AllClasses.map(sr => sr).filter(
+        sr => sr.ID === classes
+      )[0];
+
+      if (Number.isInteger(classes)) {
+        ClientClassObj = ClientClassObj;
+      } else if (ClientClassObj == " " || ClientClassObj === " ") {
+        ClientClassObj = AllClasses[AllClasses.length - 1];
+      } else {
+        ClientClassObj = AllClasses[AllClasses.length - 1];
+      }
+      return ClientClassObj.ID;
+    }
     let updatedFInal = AllUpdatedData.map(client => {
       client.fatherOfConfession = check(client.fatherOfConfession);
       client.servantFollowing = checkServant(client.servantFollowing);
+      client.class = checkForClass(client["class"]);
       return new Client(client);
     });
     console.log(updatedFInal);
 
     let AllClients = updatedFInal;
-    this.testService.addAllClients(AllClients).subscribe(
-      data => {
-        console.log(data);
-      },
-      err => {
-        console.log(err);
-      }
-    );
+    // this.testService.addAllClients(AllClients).subscribe(
+    //   data => {
+    //     console.log(data);
+    //   },
+    //   err => {
+    //     console.log(err);
+    //   }
+    // );
   }
 }
