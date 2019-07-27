@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import { TestService } from "src/app/Services/test/test.service";
-import { Client } from 'src/app/Data-Model/Clients/client';
+import { Client } from "src/app/Data-Model/Clients/client";
 
 @Component({
   selector: "app-home",
@@ -8,7 +8,10 @@ import { Client } from 'src/app/Data-Model/Clients/client';
   styleUrls: ["home.page.scss"]
 })
 export class HomePage {
-  constructor(private testService: TestService) {
+  constructor(private testService: TestService) {}
+  ngOnInit() {}
+
+  submit() {
     let AllUpdatedData = [
       {
         counter: 1,
@@ -4188,18 +4191,107 @@ export class HomePage {
         class: 3
       }
     ];
-    let updatedFInal = AllUpdatedData.map(client => new Client(client))
-    console.log(updatedFInal);
-    
-    let AllClients = updatedFInal
-    this.testService.addAllClients(AllClients).subscribe(
-      data => {
-        console.log(data);
+
+    let Priests = [
+      {
+        ID: 1,
+        Name: "يوسف سمير",
+        Church: "الملاك الظاهر"
       },
-      err => {
-        console.log(err);
+      {
+        ID: 2,
+        Name: "برسوم عريان",
+        Church: "الملاك الظاهر"
+      },
+      {
+        ID: 3,
+        Name: "انجيلوس كريم",
+        Church: "الملاك الظاهر"
+      },
+      {
+        ID: 4,
+        Name: "تادرس",
+        Church: "الملاك الظاهر"
+      },
+      {
+        ID: 5,
+        Name: "موسي موسي",
+        Church: "الملاك الظاهر"
+      },
+      {
+        ID: 6,
+        Name: "اغسطين",
+        Church: "مطرانية الجيزة"
+      },
+      {
+        ID: 7,
+        Name: "يوحنا",
+        Church: "العذرا الفجاله"
+      },
+      {
+        ID: 8,
+        Name: "فيلوباتير",
+        Church: "العذرا الفجاله"
+      },
+      {
+        ID: 9,
+        Name: "دانيال",
+        Church: "الملاك حارة السقايين"
+      },
+      {
+        ID: 10,
+        Name: "روفائيل",
+        Church: "مارجرجس المنسي"
+      },
+      {
+        ID: 11,
+        Name: "رويس",
+        Church: "العدرا و الملاك الخلفاوى"
+      },
+      {
+        ID: 12,
+        Name: "يوسف الزاويه",
+        Church: "الزاويه"
+      },
+      {
+        ID: 13,
+        Name: "اسطفانوس",
+        Church: "مارجرجس المنسي"
+      },
+      {
+        ID: 14,
+        Name: "لا يوجد",
+        Church: null
       }
-    );
+    ];
+    let priestOb;
+    function check(priest) {
+      priestOb = Priests.map(pr => pr).filter(pr => pr.Name === priest)[0];
+
+      if (priestOb) {
+        priestOb = priestOb;
+      } else if (priestOb == " " || priestOb === " ") {
+        priestOb = Priests[Priests.length - 1];
+      } else {
+        priestOb = Priests[Priests.length - 1];
+      }
+      return priestOb.ID;
+    }
+    let updatedFInal = AllUpdatedData.map(client => {
+      client.fatherOfConfession = check(client.fatherOfConfession);
+
+      return new Client(client);
+    });
+    console.log(updatedFInal);
+
+    let AllClients = updatedFInal;
+    // this.testService.addAllClients(AllClients).subscribe(
+    //   data => {
+    //     console.log(data);
+    //   },
+    //   err => {
+    //     console.log(err);
+    //   }
+    // );
   }
-  ngOnInit() {}
 }

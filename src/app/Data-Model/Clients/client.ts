@@ -28,7 +28,7 @@ export class Client {
     this.LocationX = 0;
     this.LocationY = 0;
     this.Note = ClientOptions.notes;
-    this.fatherOfConfession = 1;
+    this.fatherOfConfession = ClientOptions.fatherOfConfession;
     this.servantFollowing = 1;
     this.clientCategoryID = 1;
     this.chomosya = true;
