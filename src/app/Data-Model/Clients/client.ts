@@ -29,7 +29,7 @@ export class Client {
     this.LocationY = 0;
     this.Note = ClientOptions.notes;
     this.fatherOfConfession = ClientOptions.fatherOfConfession;
-    this.servantFollowing = 1;
+    this.servantFollowing = ClientOptions.servantFollowing;
     this.clientCategoryID = 1;
     this.chomosya = true;
     this.MobilePhone = String(ClientOptions.MobilePhone);

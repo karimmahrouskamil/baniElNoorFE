@@ -4277,21 +4277,248 @@ export class HomePage {
       }
       return priestOb.ID;
     }
+    let AllServants = [
+      {
+        ID: 1,
+        Name: "باسم مكرم",
+        email: null,
+        mobile: null,
+        AddressID: null
+      },
+      {
+        ID: 2,
+        Name: "ابراهيم صموئيل",
+        email: null,
+        mobile: null,
+        AddressID: null
+      },
+      {
+        ID: 3,
+        Name: "مايكل وحيد",
+        email: null,
+        mobile: null,
+        AddressID: null
+      },
+      {
+        ID: 4,
+        Name: "بيتر ميلاد",
+        email: null,
+        mobile: null,
+        AddressID: null
+      },
+      {
+        ID: 5,
+        Name: "بيشوى ميخائيل",
+        email: null,
+        mobile: null,
+        AddressID: null
+      },
+      {
+        ID: 6,
+        Name: "بيتر محسن",
+        email: null,
+        mobile: null,
+        AddressID: null
+      },
+      {
+        ID: 7,
+        Name: "أنطوان سليمان",
+        email: null,
+        mobile: null,
+        AddressID: null
+      },
+      {
+        ID: 8,
+        Name: "مينا ممدوح",
+        email: null,
+        mobile: null,
+        AddressID: null
+      },
+      {
+        ID: 9,
+        Name: "باسم وهيب",
+        email: null,
+        mobile: null,
+        AddressID: null
+      },
+      {
+        ID: 10,
+        Name: "هاني فرح",
+        email: null,
+        mobile: null,
+        AddressID: null
+      },
+      {
+        ID: 11,
+        Name: "مجدي شحاته",
+        email: null,
+        mobile: null,
+        AddressID: null
+      },
+      {
+        ID: 12,
+        Name: "رامي فليب",
+        email: null,
+        mobile: null,
+        AddressID: null
+      },
+      {
+        ID: 13,
+        Name: "عتدل عطاالله",
+        email: null,
+        mobile: null,
+        AddressID: null
+      },
+      {
+        ID: 14,
+        Name: "اندرو خليل",
+        email: null,
+        mobile: null,
+        AddressID: null
+      },
+      {
+        ID: 15,
+        Name: "كريم محروس",
+        email: null,
+        mobile: null,
+        AddressID: null
+      },
+      {
+        ID: 16,
+        Name: "مايكل صفوت",
+        email: null,
+        mobile: null,
+        AddressID: null
+      },
+      {
+        ID: 17,
+        Name: "فادي شريف",
+        email: null,
+        mobile: null,
+        AddressID: null
+      },
+      {
+        ID: 18,
+        Name: "بيشوي غبريال",
+        email: null,
+        mobile: null,
+        AddressID: null
+      },
+      {
+        ID: 19,
+        Name: "جورج صابر",
+        email: null,
+        mobile: null,
+        AddressID: null
+      },
+      {
+        ID: 20,
+        Name: "كوليا",
+        email: null,
+        mobile: null,
+        AddressID: null
+      },
+      {
+        ID: 21,
+        Name: "مايكل صفوت",
+        email: null,
+        mobile: null,
+        AddressID: null
+      },
+      {
+        ID: 22,
+        Name: "مينا ممتاز",
+        email: null,
+        mobile: null,
+        AddressID: null
+      },
+      {
+        ID: 23,
+        Name: "مينا نادي",
+        email: null,
+        mobile: null,
+        AddressID: null
+      },
+      {
+        ID: 24,
+        Name: "مينا يوسف",
+        email: null,
+        mobile: null,
+        AddressID: null
+      },
+      {
+        ID: 25,
+        Name: "نجيب ميلاد",
+        email: null,
+        mobile: null,
+        AddressID: null
+      },
+      {
+        ID: 26,
+        Name: "بافلي برهوم",
+        email: null,
+        mobile: null,
+        AddressID: null
+      },
+      {
+        ID: 27,
+        Name: "يوسف صابر",
+        email: null,
+        mobile: null,
+        AddressID: null
+      },
+      {
+        ID: 28,
+        Name: "سامر انيس",
+        email: null,
+        mobile: null,
+        AddressID: null
+      },
+      {
+        ID: 29,
+        Name: "اندرو ماهر",
+        email: null,
+        mobile: null,
+        AddressID: null
+      },
+      {
+        ID: 30,
+        Name: "لا يوجد",
+        email: null,
+        mobile: null,
+        AddressID: null
+      }
+    ];
+    let servantObj;
+    function checkServant(servants) {
+      servantObj = AllServants.map(sr => sr).filter(
+        sr => sr.Name === servants
+      )[0];
+
+      if (servantObj) {
+        servantObj = servantObj;
+      } else if (servantObj == " " || servantObj === " ") {
+        servantObj = AllServants[AllServants.length - 1];
+      } else {
+        servantObj = AllServants[AllServants.length - 1];
+      }
+      return servantObj.ID;
+    }
     let updatedFInal = AllUpdatedData.map(client => {
       client.fatherOfConfession = check(client.fatherOfConfession);
-
+      client.servantFollowing = checkServant(client.servantFollowing);
       return new Client(client);
     });
     console.log(updatedFInal);
 
     let AllClients = updatedFInal;
-    // this.testService.addAllClients(AllClients).subscribe(
-    //   data => {
-    //     console.log(data);
-    //   },
-    //   err => {
-    //     console.log(err);
-    //   }
-    // );
+    this.testService.addAllClients(AllClients).subscribe(
+      data => {
+        console.log(data);
+      },
+      err => {
+        console.log(err);
+      }
+    );
   }
 }
