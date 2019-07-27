@@ -38,6 +38,6 @@ export class Client {
     this.fatherPhone = ClientOptions.fatherPhone;
     this.motherPhone = ClientOptions.motherPhone;
     this.Class = ClientOptions.class;
-    this.Zone = 1;
+    this.Zone = ClientOptions.zone;
   }
 }

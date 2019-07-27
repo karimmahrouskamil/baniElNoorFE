@@ -4537,22 +4537,66 @@ export class HomePage {
       }
       return ClientClassObj.ID;
     }
+    let AllZonesObj = [
+      {
+        ID: 1,
+        type: "A"
+      },
+      {
+        ID: 2,
+        type: "B"
+      },
+      {
+        ID: 3,
+        type: "C"
+      },
+      {
+        ID: 4,
+        type: "D"
+      },
+      {
+        ID: 5,
+        type: "E"
+      },
+      {
+        ID: 6,
+        type: "F"
+      },
+      {
+        ID: 7,
+        type: "لا يوجد"
+      }
+    ];
+    let ZoneObj;
+    function checkForZone(Zones) {
+      ZoneObj = AllZonesObj.map(sr => sr).filter(sr => sr.type === Zones)[0];
+
+      if (ZoneObj) {
+        ZoneObj = ZoneObj;
+      } else if (ZoneObj == " " || ZoneObj === " ") {
+        ZoneObj = AllZonesObj[AllZonesObj.length - 1];
+      } else {
+        ZoneObj = AllZonesObj[AllZonesObj.length - 1];
+      }
+      return ZoneObj.ID;
+    }
     let updatedFInal = AllUpdatedData.map(client => {
       client.fatherOfConfession = check(client.fatherOfConfession);
       client.servantFollowing = checkServant(client.servantFollowing);
       client.class = checkForClass(client["class"]);
+      client.zone = checkForZone(client.zone);
       return new Client(client);
     });
     console.log(updatedFInal);
 
     let AllClients = updatedFInal;
-    // this.testService.addAllClients(AllClients).subscribe(
-    //   data => {
-    //     console.log(data);
-    //   },
-    //   err => {
-    //     console.log(err);
-    //   }
-    // );
+    this.testService.addAllClients(AllClients).subscribe(
+      data => {
+        console.log(data);
+      },
+      err => {
+        console.log(err);
+      }
+    );
   }
 }
