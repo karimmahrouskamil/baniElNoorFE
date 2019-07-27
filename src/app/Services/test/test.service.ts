@@ -11,7 +11,7 @@ export class TestService {
   constructor(private http: HttpClient) {}
   
   getAll(): Observable<any> {
-    return this.http.get(SERVER.DomainURL).pipe(
+    return this.http.get(SERVER.DomainURL+'/test').pipe(
       map(
         (data: any[]) =>
           (data = data)
@@ -21,6 +21,18 @@ export class TestService {
       })
     );
   }
+  addAllClients(AllClients:any): Observable<any> {
+    return this.http.post(SERVER.DomainURL+'/client/postTest', AllClients).pipe(
+      map(
+        (data: any) =>
+          (data = data)
+      ),
+      catchError(err => {
+        return this.handleServerError(err);
+      })
+    );
+  }
+  
   handleServerError(error: any) {
     // console.log(error.error || error.json() || error);
     return Observable.throw("Server error in question service", error);
