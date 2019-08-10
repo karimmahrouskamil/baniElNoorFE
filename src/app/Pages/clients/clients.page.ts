@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ClientsService } from "../../Services/Clients/clients.service";
 import { Client } from "../../Data-Model/Clients/client";
-import { Router } from "@angular/router";
+import { Router, NavigationExtras } from "@angular/router";
 
 @Component({
   selector: "app-clients",
@@ -18,7 +18,12 @@ export class ClientsPage implements OnInit {
       console.log(this.CLients);
     });
   }
-  navigateToClientDetails() {
-    this.router.navigate(["client-details"]);
+  navigateToClientDetails(client:Client) {
+    let navigationExtras: NavigationExtras = {
+      state: {
+        client: client
+      }
+    };
+    this.router.navigate(["client-details"], navigationExtras);
   }
 }

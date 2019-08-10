@@ -5,7 +5,7 @@
   
 
   <ion-list>
-    <ion-item *ngFor="let client of CLients" (click)="navigateToClientDetails()">
+    <ion-item *ngFor="let client of CLients" (click)="navigateToClientDetails(client)">
       <ion-label>{{client.Name}}</ion-label>
     </ion-item>
 
