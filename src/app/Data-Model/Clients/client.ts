@@ -23,7 +23,7 @@ export class Client {
   buildingNumber: string;
   flatNumber: string;
   streetDetails: string;
-  
+  SchoolID: number;
   constructor(ClientOptions: any) {
     this.Name = ClientOptions.name;
     this.Info = ClientOptions.notes;
@@ -48,6 +48,7 @@ export class Client {
     this.motherPhone = ClientOptions.motherPhone;
     this.Class = ClientOptions.class;
     this.Zone = ClientOptions.zone;
+    this.SchoolID = ClientOptions.school
   }
 }
 export class Address {

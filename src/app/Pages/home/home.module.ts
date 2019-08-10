@@ -1,12 +1,12 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { IonicModule } from '@ionic/angular';
-import { RouterModule } from '@angular/router';
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { FormsModule } from "@angular/forms";
+import { IonicModule } from "@ionic/angular";
+import { RouterModule } from "@angular/router";
 
-import { HomePage } from './home.page';
-import { TranslateModule } from '@ngx-translate/core';
-import { MaterialModule } from 'src/app/material/material.module';
+import { HomePage } from "./home.page";
+import { TranslateModule } from "@ngx-translate/core";
+import { MaterialShareModuleModule } from "src/app/material-share-module/material-share-module.module";
 
 @NgModule({
   imports: [
@@ -14,14 +14,13 @@ import { MaterialModule } from 'src/app/material/material.module';
     FormsModule,
     IonicModule,
     TranslateModule,
-    MaterialModule,
     RouterModule.forChild([
       {
-        path: '',
+        path: "",
         component: HomePage
       }
-    ])
-
+    ]),
+    MaterialShareModuleModule
   ],
   declarations: [HomePage]
 })

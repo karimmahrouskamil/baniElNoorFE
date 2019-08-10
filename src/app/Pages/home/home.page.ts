@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { TestService } from "src/app/Services/test/test.service";
 import { Client } from "src/app/Data-Model/Clients/client";
+import { ClientsService } from 'src/app/Services/Clients/clients.service';
 
 @Component({
   selector: "app-home",
@@ -8,7 +9,7 @@ import { Client } from "src/app/Data-Model/Clients/client";
   styleUrls: ["home.page.scss"]
 })
 export class HomePage {
-  constructor(private testService: TestService) {}
+  constructor(private testService: ClientsService) {}
   ngOnInit() {}
 
   submit() {
@@ -4580,17 +4581,174 @@ export class HomePage {
       }
       return ZoneObj.ID;
     }
+    let AllSchools = [
+      {
+        ID: 1,
+        Name: "صحارا"
+      },
+      {
+        ID: 2,
+        Name: "البطريركية"
+      },
+      {
+        ID: 3,
+        Name: "القديس ميخائيل"
+      },
+      {
+        ID: 4,
+        Name: "الفاروق عمر"
+      },
+      {
+        ID: 5,
+        Name: "ثمرة التوفيق"
+      },
+      {
+        ID: 6,
+        Name: "المنارة بالمرج"
+      },
+      {
+        ID: 7,
+        Name: "المارونية"
+      },
+      {
+        ID: 8,
+        Name: "السلام"
+      },
+      {
+        ID: 9,
+        Name: "الراعى الصالح"
+      },
+      {
+        ID: 10,
+        Name: "الازبكية"
+      },
+      {
+        ID: 11,
+        Name: "آمون"
+      },
+      {
+        ID: 12,
+        Name: "الدي لاسال"
+      },
+      {
+        ID: 13,
+        Name: "Dover"
+      },
+      {
+        ID: 14,
+        Name: "Calestiano Marianne"
+      },
+      {
+        ID: 15,
+        Name: "مديحة كونسو"
+      },
+      {
+        ID: 16,
+        Name: "الجلاء التجريبية لغات"
+      },
+      {
+        ID: 17,
+        Name: "السلام"
+      },
+      {
+        ID: 18,
+        Name: "المعارف الحديثة لغات الزيتون"
+      },
+      {
+        ID: 19,
+        Name: "اسلام زاويد"
+      },
+      {
+        ID: 20,
+        Name: "العابدية"
+      },
+      {
+        ID: 21,
+        Name: "التوفيق لغات"
+      },
+      {
+        ID: 22,
+        Name: "نيو رمسيس"
+      },
+      {
+        ID: 23,
+        Name: "تقى اللة حلمى"
+      },
+      {
+        ID: 24,
+        Name: "بطمس"
+      },
+      {
+        ID: 25,
+        Name: "ثمرة التوفيق "
+      },
+      {
+        ID: 26,
+        Name: "الفا-العبور"
+      },
+      {
+        ID: 27,
+        Name: "طارق بن زياد"
+      },
+      {
+        ID: 28,
+        Name: "غمرة ثانوية بنين"
+      },
+      {
+        ID: 29,
+        Name: "عمر بن العاص"
+      },
+      {
+        ID: 30,
+        Name: "اسماعيل القبانى"
+      },
+      {
+        ID: 31,
+        Name: "السيدة-السلام"
+      },
+      {
+        ID: 32,
+        Name: "المبتديان"
+      },
+      {
+        ID: 33,
+        Name: "النصر التجريبية"
+      },
+      {
+        ID: 34,
+        Name: "مصر 2000"
+      },
+      {
+        ID: 35,
+        Name: "لايوجد"
+      }
+    ];
+    let schooObj;
+    function checkForSchool(Schools) {
+      schooObj = AllSchools.map(sr => sr).filter(sr => sr.Name === Schools)[0];
+
+      if (schooObj) {
+        schooObj = schooObj;
+      } else if (schooObj == " " || schooObj === " ") {
+        schooObj = AllSchools[AllSchools.length - 1];
+      } else {
+        schooObj = AllSchools[AllSchools.length - 1];
+      }
+      return schooObj.ID;
+    }
+
     let updatedFInal = AllUpdatedData.map(client => {
       client.fatherOfConfession = check(client.fatherOfConfession);
       client.servantFollowing = checkServant(client.servantFollowing);
       client.class = checkForClass(client["class"]);
       client.zone = checkForZone(client.zone);
+      client.school = checkForSchool(client.school);
       return new Client(client);
     });
     console.log(updatedFInal);
 
     let AllClients = updatedFInal;
-    this.testService.addAllClients(AllClients).subscribe(
+    this.testService.getAll().subscribe(
       data => {
         console.log(data);
       },
