@@ -4,8 +4,10 @@ import { Priest } from "../Priest/priest";
 import { Servant } from "../Servant/servant";
 import { Classes } from "../Classes/classes";
 import { School } from "../School/school";
+import { ClientCategory } from "../ClientCategory/client-category";
 
 export class Client {
+  ID: string;
   Name?: string;
   Info?: string;
   GraduationYearID?: number;
@@ -15,7 +17,7 @@ export class Client {
   Note?: string;
   fatherOfConfession?: Priest;
   servantFollowing?: Servant;
-  clientCategoryID?: number;
+  clientCategory?: ClientCategory;
   chomosya?: boolean;
   MobilePhone?: string;
   HomePhone?: string;
@@ -28,6 +30,7 @@ export class Client {
   Address: Address;
 
   constructor(ClientOptions: any) {
+    this.ID = ClientOptions.ID;
     this.Name = ClientOptions.ClientName;
     this.Info = ClientOptions.ClientInfo;
     this.GraduationYearID = ClientOptions.ClientGraduationYearID;
@@ -46,7 +49,13 @@ export class Client {
       ClientOptions.ServantEmail,
       ClientOptions.ServantEmail
     );
-    this.clientCategoryID = ClientOptions.clientCategoryID;
+    this.clientCategory = new ClientCategory(
+      ClientOptions.clientCategoryID,
+      ClientOptions.clientCategoryID,
+      ClientOptions.ID,
+      ClientOptions.CategoryName,
+      ClientOptions.CategoryComment
+    );
     this.chomosya = ClientOptions.ClientChomosya;
     this.MobilePhone = String(ClientOptions.ClientMobilePhone);
     this.HomePhone = String(ClientOptions.ClientHomePhone);
