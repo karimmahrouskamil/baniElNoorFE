@@ -13,8 +13,8 @@ import { HttpClientModule, HttpClient } from "@angular/common/http";
 import { TranslateModule, TranslateLoader } from "@ngx-translate/core";
 import { TranslateHttpLoader } from "@ngx-translate/http-loader";
 import { IonicStorageModule } from "@ionic/storage";
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialShareModuleModule } from './material-share-module/material-share-module.module';
+import { BrowserAnimationsModule, NoopAnimationsModule } from "@angular/platform-browser/animations";
+import { MaterialModule } from "./Material-design-modules/material.module";
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, "assets/i18n/", ".json");
@@ -27,6 +27,8 @@ export function createTranslateLoader(http: HttpClient) {
     IonicModule.forRoot(),
     AppRoutingModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    NoopAnimationsModule,
     IonicStorageModule.forRoot(),
     TranslateModule.forRoot({
       loader: {
@@ -35,8 +37,7 @@ export function createTranslateLoader(http: HttpClient) {
         deps: [HttpClient]
       }
     }),
-    BrowserAnimationsModule,
-    MaterialShareModuleModule
+    MaterialModule
   ],
   providers: [
     StatusBar,
@@ -44,5 +45,6 @@ export function createTranslateLoader(http: HttpClient) {
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent],
+  exports: [MaterialModule]
 })
 export class AppModule {}

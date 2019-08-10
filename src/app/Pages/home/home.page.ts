@@ -9,6 +9,7 @@ import { ClientsService } from 'src/app/Services/Clients/clients.service';
   styleUrls: ["home.page.scss"]
 })
 export class HomePage {
+  panelOpenState = false
   constructor(private testService: ClientsService) {}
   ngOnInit() {}
 

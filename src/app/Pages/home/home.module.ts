@@ -6,7 +6,7 @@ import { RouterModule } from "@angular/router";
 
 import { HomePage } from "./home.page";
 import { TranslateModule } from "@ngx-translate/core";
-import { MaterialShareModuleModule } from "src/app/material-share-module/material-share-module.module";
+import { MaterialModule } from "src/app/Material-design-modules/material.module";
 
 @NgModule({
   imports: [
@@ -20,8 +20,9 @@ import { MaterialShareModuleModule } from "src/app/material-share-module/materia
         component: HomePage
       }
     ]),
-    MaterialShareModuleModule
+    MaterialModule
   ],
-  declarations: [HomePage]
+  declarations: [HomePage],
+  exports: [MaterialModule]
 })
 export class HomePageModule {}

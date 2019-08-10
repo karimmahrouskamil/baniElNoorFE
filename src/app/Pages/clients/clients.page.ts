@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./clients.page.scss'],
 })
 export class ClientsPage implements OnInit {
-
+  panelOpenState = false
   constructor() { }
 
   ngOnInit() {

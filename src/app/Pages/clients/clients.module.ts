@@ -1,15 +1,16 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { Routes, RouterModule } from '@angular/router';
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { FormsModule } from "@angular/forms";
+import { Routes, RouterModule } from "@angular/router";
 
-import { IonicModule } from '@ionic/angular';
+import { IonicModule } from "@ionic/angular";
 
-import { ClientsPage } from './clients.page';
+import { ClientsPage } from "./clients.page";
+import { MaterialModule } from "../../Material-design-modules/material.module";
 
 const routes: Routes = [
   {
-    path: '',
+    path: "",
     component: ClientsPage
   }
 ];
@@ -19,8 +20,10 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    MaterialModule
   ],
-  declarations: [ClientsPage]
+  declarations: [ClientsPage],
+  exports: [MaterialModule]
 })
 export class ClientsPageModule {}
