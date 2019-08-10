@@ -2,6 +2,7 @@ import { Address } from "../Address/address";
 import { Zone } from "../Zone/zone";
 import { Priest } from "../Priest/priest";
 import { Servant } from "../Servant/servant";
+import { Classes } from '../Classes/classes';
 
 export class Client {
   Name?: string;
@@ -20,7 +21,7 @@ export class Client {
   birthDate?: Date;
   fatherPhone?: string;
   motherPhone?: string;
-  Class?: number;
+  Class?: Classes;
   Zone?: Zone;
   SchoolID?: number;
   Address: Address;
@@ -51,7 +52,7 @@ export class Client {
     this.birthDate = new Date(ClientOptions.ClientbirthDate);
     this.fatherPhone = ClientOptions.ClientFatherPhone;
     this.motherPhone = ClientOptions.ClientMotherPhone;
-    this.Class = ClientOptions.ClientClass;
+    this.Class = new Classes(ClientOptions.ClientClass, ClientOptions.ClassName) ;
     this.Zone = new Zone(ClientOptions.ClientZone, ClientOptions.type);
     this.SchoolID = ClientOptions.ClientSchoolID;
     this.Address = new Address(
