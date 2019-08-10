@@ -15,8 +15,7 @@ export class ClientsPage implements OnInit {
   ngOnInit() {
     this.clientService.getAll().subscribe(data => {
       this.CLients = data.map(client => new Client(client));
-   console.log(this.CLients);
-   
+      console.log(this.CLients);
     });
   }
 }
