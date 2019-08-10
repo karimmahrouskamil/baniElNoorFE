@@ -18,21 +18,17 @@ export class Client {
   motherPhone?: string;
   Class?: number;
   Zone?: number;
-  streetName?: string;
-  floorNumber?: string;
-  buildingNumber?: string;
-  flatNumber?: string;
-  streetDetails?: string;
+  // streetName?: string;
+  // floorNumber?: string;
+  // buildingNumber?: string;
+  // flatNumber?: string;
+  // streetDetails?: string;
   SchoolID?: number;
+  Address: Address;
   constructor(ClientOptions: any) {
     this.Name = ClientOptions.ClientName;
     this.Info = ClientOptions.ClientInfo;
     this.GraduationYearID = ClientOptions.ClientGraduationYearID;
-    this.streetName = ClientOptions.ClientstreetName;
-    this.floorNumber = String(ClientOptions.ClientFloorNumber);
-    this.buildingNumber = String(ClientOptions.ClientBuildingNumber);
-    this.flatNumber = String(ClientOptions.ClientFlatNumber);
-    this.streetDetails = ClientOptions.ClientStreetDetails;
     this.Email = ClientOptions.ClientEmail;
     this.LocationX = ClientOptions.ClientLocationX;
     this.LocationY = ClientOptions.ClientLocationY;
@@ -49,14 +45,21 @@ export class Client {
     this.Class = ClientOptions.ClientClass;
     this.Zone = ClientOptions.ClientZone;
     this.SchoolID = ClientOptions.ClientSchoolID;
+    this.Address = new Address(
+      ClientOptions.ClientstreetName,
+      ClientOptions.ClientFloorNumber,
+      ClientOptions.ClientBuildingNumber,
+      ClientOptions.ClientFlatNumber,
+      ClientOptions.ClientStreetDetails
+    );
   }
 }
 export class Address {
-  Street: string;
-  FloorNum: string;
-  BuildingNum: string;
-  AppartmentNum: string;
-  streetDetails: string;
+  streetName?: string;
+  FloorNum?: string;
+  buildingNumber?: string;
+  flatNumber?: string;
+  streetDetails?: string;
 
   constructor(
     streetName,
@@ -65,10 +68,10 @@ export class Address {
     flatNumber,
     streetDetails
   ) {
-    this.Street = streetName;
-    this.FloorNum = floorNumber;
-    this.BuildingNum = buildingNumber;
-    this.AppartmentNum = flatNumber;
+    this.streetName = streetName;
+    this.FloorNum = String(floorNumber);
+    this.buildingNumber = String(buildingNumber);
+    this.flatNumber = String(flatNumber);
     this.streetDetails = streetDetails;
   }
 }
