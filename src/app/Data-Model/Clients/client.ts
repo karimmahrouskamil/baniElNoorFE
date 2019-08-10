@@ -1,6 +1,7 @@
 import { Address } from "../Address/address";
 import { Zone } from "../Zone/zone";
 import { Priest } from "../Priest/priest";
+import { Servant } from "../Servant/servant";
 
 export class Client {
   Name?: string;
@@ -11,7 +12,7 @@ export class Client {
   LocationY?: number;
   Note?: string;
   fatherOfConfession?: Priest;
-  servantFollowing?: number;
+  servantFollowing?: Servant;
   clientCategoryID?: number;
   chomosya?: boolean;
   MobilePhone?: string;
@@ -37,7 +38,12 @@ export class Client {
       ClientOptions.PriestName,
       ClientOptions.PriestChurch
     );
-    this.servantFollowing = ClientOptions.ClientServantFollowing;
+    this.servantFollowing = new Servant(
+      ClientOptions.ClientServantFollowing,
+      ClientOptions.ServantName,
+      ClientOptions.ServantEmail,
+      ClientOptions.ServantEmail
+    );
     this.clientCategoryID = ClientOptions.clientCategoryID;
     this.chomosya = ClientOptions.ClientChomosya;
     this.MobilePhone = String(ClientOptions.ClientMobilePhone);
