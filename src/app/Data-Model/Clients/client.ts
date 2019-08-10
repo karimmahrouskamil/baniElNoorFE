@@ -1,8 +1,9 @@
+import { Address } from '../Address/address';
+
 export class Client {
   Name?: string;
   Info?: string;
   GraduationYearID?: number;
-  // AddressID: Address;
   Email?: string;
   LocationX?: number;
   LocationY?: number;
@@ -18,11 +19,6 @@ export class Client {
   motherPhone?: string;
   Class?: number;
   Zone?: number;
-  // streetName?: string;
-  // floorNumber?: string;
-  // buildingNumber?: string;
-  // flatNumber?: string;
-  // streetDetails?: string;
   SchoolID?: number;
   Address: Address;
   constructor(ClientOptions: any) {
@@ -54,24 +50,4 @@ export class Client {
     );
   }
 }
-export class Address {
-  streetName?: string;
-  FloorNum?: string;
-  buildingNumber?: string;
-  flatNumber?: string;
-  streetDetails?: string;
 
-  constructor(
-    streetName,
-    floorNumber,
-    buildingNumber,
-    flatNumber,
-    streetDetails
-  ) {
-    this.streetName = streetName;
-    this.FloorNum = String(floorNumber);
-    this.buildingNumber = String(buildingNumber);
-    this.flatNumber = String(flatNumber);
-    this.streetDetails = streetDetails;
-  }
-}
