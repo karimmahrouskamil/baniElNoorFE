@@ -1,4 +1,5 @@
-import { Address } from '../Address/address';
+import { Address } from "../Address/address";
+import { Zone } from "../Zone/zone";
 
 export class Client {
   Name?: string;
@@ -18,9 +19,10 @@ export class Client {
   fatherPhone?: string;
   motherPhone?: string;
   Class?: number;
-  Zone?: number;
+  Zone?: Zone;
   SchoolID?: number;
   Address: Address;
+
   constructor(ClientOptions: any) {
     this.Name = ClientOptions.ClientName;
     this.Info = ClientOptions.ClientInfo;
@@ -39,7 +41,7 @@ export class Client {
     this.fatherPhone = ClientOptions.ClientFatherPhone;
     this.motherPhone = ClientOptions.ClientMotherPhone;
     this.Class = ClientOptions.ClientClass;
-    this.Zone = ClientOptions.ClientZone;
+    this.Zone = new Zone(ClientOptions.ClientZone, ClientOptions.type);
     this.SchoolID = ClientOptions.ClientSchoolID;
     this.Address = new Address(
       ClientOptions.ClientstreetName,
@@ -50,4 +52,3 @@ export class Client {
     );
   }
 }
-
