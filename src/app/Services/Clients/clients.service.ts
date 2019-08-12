@@ -4,14 +4,22 @@ import { Observable } from "rxjs";
 import { SERVER } from "src/environments/environment";
 import { map, catchError } from "rxjs/operators";
 import { Client } from "src/app/Data-Model/Clients/client";
+import { Resolve, ActivatedRouteSnapshot } from "@angular/router";
 
 @Injectable({
   providedIn: "root"
 })
-export class ClientsService {
+export class ClientsService implements Resolve<any> {
+ 
   Client: Client;
-
+  Clients: Client[];
   constructor(private http: HttpClient) {}
+
+  resolve(route: ActivatedRouteSnapshot) {
+    let id = route.paramMap.get("id");
+    return this.getClient(id);
+  }
+  
   getAll(): Observable<any> {
     return this.http.get(SERVER.DomainURL + "/client/Clients").pipe(
       map((data: any[]) => (data = data)),
@@ -20,11 +28,11 @@ export class ClientsService {
       })
     );
   }
-  setClient(client: Client) {
-    this.Client = client;
+  setClient(clients: Client[]) {
+    this.Clients = clients;
   }
-  getClient() {
-    return this.Client;
+  getClient(id) {
+    return this.Clients[id];
   }
   handleServerError(error: any) {
     // console.log(error.error || error.json() || error);

@@ -29,7 +29,8 @@ export class ClientsPage implements OnInit {
     //     id: client.ID
     //   }
     // };
-    this.dataService.setData(this.CLients);
+    // this.dataService.setData(this.CLients);
+    this.clientService.setClient(this.CLients)
     this.router.navigateByUrl("/client-details/" + index);
   }
 }
