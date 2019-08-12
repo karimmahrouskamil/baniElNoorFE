@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core";
 import { PreloadAllModules, RouterModule, Routes } from "@angular/router";
+import { DataResolverService } from "./Services/DataResolver/data-resolver.service";
 
 const routes: Routes = [
   {
@@ -20,7 +21,8 @@ const routes: Routes = [
     loadChildren: "./Pages/clients/clients.module#ClientsPageModule"
   },
   {
-    path: "client-details",
+    path: "client-details/:id",
+    resolve: { special: DataResolverService },
     loadChildren:
       "./Pages/client-details/client-details.module#ClientDetailsPageModule"
   }
