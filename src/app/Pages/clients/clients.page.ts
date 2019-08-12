@@ -19,13 +19,14 @@ export class ClientsPage implements OnInit {
     });
   }
   navigateToClientDetails(index, client: Client) {
-    // let navigationExtras: NavigationExtras = {
-    //   state: {
-    //     id: client.ID
-    //   }
-    // };
-
-    this.clientService.setClient(this.CLients);
-    this.router.navigateByUrl("/client-details/" + index);
+    let navigationExtras: NavigationExtras = {
+      state: {
+        client: client
+      },
+      skipLocationChange: false
+    };
+    this.router.navigate(["client-details"], navigationExtras);
+    // this.clientService.setClient(client);
+    // this.router.navigateByUrl("/client-details/" + index);
   }
 }

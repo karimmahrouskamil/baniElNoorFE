@@ -21,8 +21,7 @@ const routes: Routes = [
     loadChildren: "./Pages/clients/clients.module#ClientsPageModule"
   },
   {
-    path: "client-details/:id",
-    resolve: { special: ClientsService },
+    path: "client-details",
     loadChildren:
       "./Pages/client-details/client-details.module#ClientDetailsPageModule"
   }

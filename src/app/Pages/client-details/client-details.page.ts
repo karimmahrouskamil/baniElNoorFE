@@ -11,13 +11,14 @@ export class ClientDetailsPage implements OnInit {
   constructor(private route: ActivatedRoute, private router: Router) {}
   CLient: Client;
   ngOnInit() {
-    if (this.route.snapshot.data["special"]) {
-      this.CLient = this.route.snapshot.data["special"];
-      console.log(this.CLient);
+    // if (this.route.snapshot.data["special"]) {
+    //   this.CLient = this.route.snapshot.data["special"];
+    //   console.log(this.CLient);
+    // }
+    if (window.history.state.client) {
+      this.CLient = window.history.state.client;
+    } else {
+      this.CLient = null;
     }
-    // this.route.queryParams.subscribe(params => {
-    //     this.CLient = window.history.state.client;
-
-    // });
   }
 }
