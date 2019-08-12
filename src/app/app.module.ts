@@ -15,6 +15,7 @@ import { TranslateHttpLoader } from "@ngx-translate/http-loader";
 import { IonicStorageModule } from "@ionic/storage";
 import { BrowserAnimationsModule, NoopAnimationsModule } from "@angular/platform-browser/animations";
 import { MaterialModule } from "./Material-design-modules/material.module";
+import { SharedPipesModule } from './Pipes/shared-pipes.module';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, "assets/i18n/", ".json");
@@ -37,7 +38,8 @@ export function createTranslateLoader(http: HttpClient) {
         deps: [HttpClient]
       }
     }),
-    MaterialModule
+    MaterialModule,
+    SharedPipesModule
   ],
   providers: [
     StatusBar,
