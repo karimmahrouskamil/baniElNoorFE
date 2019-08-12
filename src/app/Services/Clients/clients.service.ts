@@ -5,21 +5,23 @@ import { SERVER } from "src/environments/environment";
 import { map, catchError } from "rxjs/operators";
 import { Client } from "src/app/Data-Model/Clients/client";
 import { Resolve, ActivatedRouteSnapshot } from "@angular/router";
+import { AbstractCRUD } from '../abstractCRUD/abstract-crud';
 
 @Injectable({
   providedIn: "root"
 })
-export class ClientsService implements Resolve<any> {
- 
+export class ClientsService extends AbstractCRUD<Client> implements Resolve<any> {
   Client: Client;
   Clients: Client[];
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    super();
+  }
 
   resolve(route: ActivatedRouteSnapshot) {
     let id = route.paramMap.get("id");
     return this.getClient(id);
   }
-  
+
   getAll(): Observable<any> {
     return this.http.get(SERVER.DomainURL + "/client/Clients").pipe(
       map((data: any[]) => (data = data)),
